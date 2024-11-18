@@ -1,0 +1,5 @@
+services:
+  webfrontend:
+    volumes: !override
+      - /home/app/.microsoft/usersecrets:/home/app/.microsoft/usersecrets:ro
+      - /home/app/.aspnet/https:/home/app/.aspnet/https:ro

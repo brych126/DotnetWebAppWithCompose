@@ -4,13 +4,28 @@ services:
     build:
       context: .
       dockerfile: WebFrontEnd/Dockerfile
+    networks:
+      - frontend
+    depends_on: 
+      - mywebapi
 
   mywebapi:
     image: ${DOCKER_REGISTRY-}mywebapi
     build:
       context: .
       dockerfile: MyWebAPI/Dockerfile
+    networks:
+      - backend
+      - frontend
+    depends_on: 
+      - redis
 
   redis:
     image: redis
+    networks:
+      - backend
+
+networks:
+  backend:
+  frontend:
 

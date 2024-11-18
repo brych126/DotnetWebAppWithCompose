@@ -31,7 +31,8 @@ namespace WebFrontEnd.Pages
                 // If your WebAPI is exposed on port 80 (the default for HTTP, used
                 // with earlier versions of the generated Dockerfile), change
                 // or delete the port number here.
-                request.RequestUri = new Uri("http://mywebapi:8080/Counter");
+                request.RequestUri = new Uri("http://mywebapi:8080/Counter");//all services are containerized
+                //request.RequestUri = new Uri("http://localhost:8980/Counter"); //mywebapi is containerized
                 var response = await client.SendAsync(request);
                 string counter = await response.Content.ReadAsStringAsync();
                 ViewData["Message"] = $"Counter value from cache :{counter}";
