@@ -7,13 +7,20 @@ services:
     networks:
       - frontend
     depends_on: 
-      - mywebapi
+      mywebapi:
+        condition: service_healthy
 
   mywebapi:
     image: ${DOCKER_REGISTRY-}mywebapi
     build:
       context: .
       dockerfile: MyWebAPI/Dockerfile
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/HealthCheck"]
+      interval: 1m           # Time between health checks
+      timeout: 3s            # Maximum time for a single health check
+      retries: 3             # Number of retries before marking as unhealthy
+      start_period: 10s      # Initial delay before health checks start
     networks:
       - backend
       - frontend

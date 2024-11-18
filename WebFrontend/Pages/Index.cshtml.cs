@@ -17,20 +17,6 @@ namespace WebFrontEnd.Pages
             using (var client = new HttpClient())
             {
                 var request = new HttpRequestMessage();
-
-                // A delay is a quick and dirty way to work around the fact that
-                // the mywebapi service might not be immediately ready on startup.
-                // See the text for some ideas on how you can improve this.
-                // Uncomment for .NET 8 only
-                // await System.Threading.Tasks.Task.Delay(10000);
-
-                // mywebapi is the service name, as listed in docker-compose.yml.
-                // Docker Compose creates a default network with the services
-                // listed in docker-compose.yml exposed as host names.
-                // The port 8080 is exposed in the WebAPI Dockerfile.
-                // If your WebAPI is exposed on port 80 (the default for HTTP, used
-                // with earlier versions of the generated Dockerfile), change
-                // or delete the port number here.
                 request.RequestUri = new Uri("http://mywebapi:8080/Counter");//all services are containerized
                 //request.RequestUri = new Uri("http://localhost:8980/Counter"); //mywebapi is containerized
                 var response = await client.SendAsync(request);
