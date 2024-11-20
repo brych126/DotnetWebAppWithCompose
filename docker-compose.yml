@@ -16,7 +16,7 @@ services:
       context: .
       dockerfile: MyWebAPI/Dockerfile
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/HealthCheck"]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/healthz"]
       interval: 1m           # Time between health checks
       timeout: 3s            # Maximum time for a single health check
       retries: 3             # Number of retries before marking as unhealthy
