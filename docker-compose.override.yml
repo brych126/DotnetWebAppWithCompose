@@ -9,7 +9,8 @@ services:
       - "8881:8081"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      # - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro # can aso this dir be mounted if present
+      - ${USERPROFILE}/.aspnet/https:/home/app/.aspnet/https:ro
 
   mywebapi:
     environment:
