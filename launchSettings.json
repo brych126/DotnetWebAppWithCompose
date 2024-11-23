@@ -5,7 +5,17 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "webfrontend": "StartDebugging",
-        "mywebapi": "StartDebugging"
+        "mywebapi": "StartDebugging",
+        "redis": "StartWithoutDebugging"
+      }
+    },
+    "Docker Compose WebFrontEnd": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "mywebapi": "DoNotStart",
+        "redis": "DoNotStart",
+        "webfrontend": "StartDebugging"
       }
     }
   }
