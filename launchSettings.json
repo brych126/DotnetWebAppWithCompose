@@ -12,10 +12,34 @@
     "Docker Compose WebFrontEnd": {
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "webfrontend",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}",
       "serviceActions": {
         "mywebapi": "DoNotStart",
         "redis": "DoNotStart",
         "webfrontend": "StartDebugging"
+      }
+    },
+    "Docker Compose MyWebApi": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "mywebapi",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/swagger",
+      "serviceActions": {
+        "mywebapi": "StartDebugging",
+        "redis": "DoNotStart",
+        "webfrontend": "DoNotStart"
+      }
+    },
+    "Docker Compose Redis": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "mywebapi": "DoNotStart",
+        "redis": "StartWithoutDebugging",
+        "webfrontend": "DoNotStart"
       }
     }
   }

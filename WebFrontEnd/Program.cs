@@ -1,7 +1,24 @@
+using System.Xml.Linq;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+string? httpClientName = builder.Configuration["MyWebApiHttpClientName"];
+ArgumentException.ThrowIfNullOrEmpty(httpClientName);
+builder.Services.AddHttpClient(httpClientName, 
+        client =>
+        {
+            string hostname = builder.Configuration.GetValue<bool>("IsContainerized")
+                ? "mywebapi:8080"
+                : "localhost:8980";
+
+            client.BaseAddress = new Uri($"http://{hostname}/");
+        })
+    .UseSocketsHttpHandler((handler, _) => 
+        handler.PooledConnectionLifetime = TimeSpan.FromMinutes(20))
+    .SetHandlerLifetime(Timeout.InfiniteTimeSpan); // Disable rotation, as it is handled by PooledConnectionLifetime
 
 var app = builder.Build();
 
