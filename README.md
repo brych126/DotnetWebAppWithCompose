@@ -15,7 +15,7 @@ dotnet user-secrets -p .\WebFrontEnd\WebFrontEnd.csproj set "Kestrel:Certificate
 ```
 > [!NOTE]
 > The password must match the password used for the certificate.
-5. Start services via `docker compose`:
+5. Start services using `docker compose`:
 ```sh
 docker compose up -d
 ```
@@ -45,6 +45,8 @@ dotnet dev-certs https --trust
 ```sh
 dotnet user-secrets -p ./WebFrontEnd/WebFrontEnd.csproj set "Kestrel:Certificates:Development:Password" <CREDENTIAL_PLACEHOLDER>
 ```
+> [!NOTE]
+> The password must match the password used for the certificate.
 5. Change permissions for created files:
 ```sh
 sudo chmod 755 -R  ~/.aspnet/
@@ -52,7 +54,7 @@ sudo chmod 755 -R  ~/.microsoft/
 ```
 6.  Update `.env` file by replacing old value for `COMPOSE_FILE` env variable with new one `COMPOSE_FILE=docker-compose.yml:docker-compose.override.yml:docker-compose.healthcheck.yml:docker-compose-linux.override.yml`.
 `docker-compose-linux.override.yml` file has been added to the list of docker compose yaml files. It is needed because it contains overrides for certificate mount paths for linux host.
-7. Start services via `docker compose`:
+7. Start services using `docker compose`:
 ```sh
 docker compose up -d
 ```
