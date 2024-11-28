@@ -1,0 +1,8 @@
+services:
+  webfrontend:
+    build:
+      target: debug
+
+  mywebapi:
+    build:
+      target: debug

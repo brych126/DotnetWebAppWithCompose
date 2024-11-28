@@ -1,11 +1,15 @@
 # See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-# This stage is used when running from VS in fast mode (Default for Debug configuration)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-RUN apt-get update && apt-get install -y procps iputils-ping curl
-USER $APP_UID
+RUN apt-get update && apt-get install -y curl
 WORKDIR /app
 EXPOSE 8080
+
+# This stage is used(by default base stage is used unless it is overriden)
+# when running from VS in fast mode (Default for Debug configuration)
+FROM base AS debug
+RUN apt-get update && apt-get install -y procps iputils-ping
+USER $APP_UID
 
 # This stage is used to build the service project
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
@@ -28,4 +32,5 @@ RUN dotnet publish -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+USER $APP_UID
 ENTRYPOINT ["dotnet", "MyWebAPI.dll"]
