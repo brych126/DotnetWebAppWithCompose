@@ -52,4 +52,11 @@ sudo chmod 755 -R  ~/.microsoft/
 ```sh
 docker compose up -d
 ```
+
+## Useful References
+- https://learn.microsoft.com/en-us/visualstudio/containers/tutorial-multicontainer?view=vs-2022
+- https://learn.microsoft.com/en-us/visualstudio/containers/container-certificate-management?view=vs-2022#certificates
+- https://learn.microsoft.com/en-us/visualstudio/containers/docker-compose-properties?view=vs-2022#overriding-visual-studios-docker-compose-configuration
+- https://learn.microsoft.com/en-us/visualstudio/containers/container-volume-mapping?view=vs-2022#volume-mounts-in-visual-studio-container-images
+- https://learn.microsoft.com/en-us/visualstudio/containers/container-debug-customization?view=vs-2022
    
