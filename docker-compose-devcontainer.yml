@@ -1,0 +1,16 @@
+services:
+  dotnet-web-applications:
+    image: mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm
+    ports:
+      - '5178:5178'
+      - '7140:7140'
+      - '5081:5081'
+    networks:
+      - app
+  redis:
+    image: redis
+    networks:
+      - app
+      
+networks:
+  app:
