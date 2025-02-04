@@ -5,20 +5,20 @@
     "version": "0.2.0",
     "configurations": [ 
         {
-            "name": "Run/Debug on Linux WebFrontEnd [https]",
+            "name": "Run/Debug WebFrontEnd [https]",
             "type": "dotnet",
             "request": "launch",
             "projectPath": "${workspaceFolder}/WebFrontEnd/WebFrontEnd.csproj",
             "launchConfigurationId": "TargetFramework=;https",
-            "preLaunchTask": "build WebFrontEnd on Linux"
+            "preLaunchTask": "build WebFrontEnd"
         },
         {
-            "name": "Run/Debug on Linux MyWebAPI [http]",
+            "name": "Run/Debug MyWebAPI [http]",
             "type": "dotnet",
             "request": "launch",
             "projectPath": "${workspaceFolder}/MyWebAPI/MyWebAPI.csproj",
             "launchConfigurationId": "TargetFramework=;http",
-            "preLaunchTask": "build MyWebAPI on Linux"
+            "preLaunchTask": "build MyWebAPI"
         }
     ]
 }
