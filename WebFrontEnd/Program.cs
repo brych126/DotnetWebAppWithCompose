@@ -12,7 +12,7 @@ builder.Services.AddHttpClient(httpClientName,
         {
             string hostname = builder.Configuration.GetValue<bool>("IsContainerized")
                 ? "mywebapi:8080"
-                : "localhost:8980";
+                : "localhost:5178";
 
             client.BaseAddress = new Uri($"http://{hostname}/");
         })

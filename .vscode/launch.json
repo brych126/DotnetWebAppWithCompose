@@ -3,13 +3,22 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [
+    "configurations": [ 
         {
-            "name": "C#: WebFrontEnd [https]",
+            "name": "Run/Debug on Linux WebFrontEnd [https]",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}\\WebFrontEnd\\WebFrontEnd.csproj",
-            "launchConfigurationId": "TargetFramework=;https"
+            "projectPath": "${workspaceFolder}/WebFrontEnd/WebFrontEnd.csproj",
+            "launchConfigurationId": "TargetFramework=;https",
+            "preLaunchTask": "build WebFrontEnd on Linux"
+        },
+        {
+            "name": "Run/Debug on Linux MyWebAPI [http]",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/MyWebAPI/MyWebAPI.csproj",
+            "launchConfigurationId": "TargetFramework=;http",
+            "preLaunchTask": "build MyWebAPI on Linux"
         }
     ]
 }
