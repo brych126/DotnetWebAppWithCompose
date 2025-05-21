@@ -1,3 +1,4 @@
+[![.NET](https://github.com/brych126/DotnetWebAppWithCompose/actions/workflows/dotnet.yml/badge.svg)](https://github.com/brych126/DotnetWebAppWithCompose/actions/workflows/dotnet.yml)
 ## Linux containers on Windows host
 1. Clone the repo and navigate to its root folder
 ```sh
