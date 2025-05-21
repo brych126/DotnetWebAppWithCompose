@@ -6,6 +6,15 @@ name: .NET
 on:
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - '**/Dockerfile'
+      - '**/docker-compose*.yml'
+      - '**/docker-compose.dcproj'
+      - '**/.dockerignore'
+      - '**/README.md'
+      - '.devcontainer/**'
+      - '.vscode/**'
+      - '.env'
   pull_request:
     branches: [ "main" ]
 
