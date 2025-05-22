@@ -1,0 +1,18 @@
+name: Print Trigger Event Info
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  issue_comment:
+  create:
+  delete:
+
+jobs:
+  print-event:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print entire event context as JSON
+        run: |
+          echo "Triggering event JSON:"
+          echo "${{ toJSON(github.event) }}"

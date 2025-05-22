@@ -35,11 +35,3 @@ jobs:
       run: dotnet build DotnetWebAppWithCompose.sln --no-restore
     - name: Test
       run: dotnet test DotnetWebAppWithCompose.sln --no-build --verbosity normal
-
-  print_context:
-    runs-on: ubuntu-latest
-    steps:
-      - env:
-          EVENT_CONTEXT: ${{ toJSON(github.event) }}
-        run: |
-          echo $EVENT_CONTEXT
