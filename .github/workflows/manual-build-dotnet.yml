@@ -21,6 +21,9 @@ jobs:
         with:
           dotnet-version: ${{ github.event.inputs.dotnet_version }}
 
+      - name: Show installed .NET SDKs
+        run: dotnet --list-sdks
+
       - name: Restore dependencies
         run: dotnet restore DotnetWebAppWithCompose.sln
 
