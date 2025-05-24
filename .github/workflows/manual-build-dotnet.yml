@@ -1,0 +1,28 @@
+name: Manual .NET Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      dotnet_version:
+        description: 'Enter the .NET SDK version (e.g., 8.0.x)'
+        required: true
+        default: '8.0.x'
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK ${{ github.event.inputs.dotnet_version }}
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ github.event.inputs.dotnet_version }}
+
+      - name: Restore dependencies
+        run: dotnet restore DotnetWebAppWithCompose.sln
+
+      - name: Build solution
+        run: dotnet build DotnetWebAppWithCompose.sln --no-restore
