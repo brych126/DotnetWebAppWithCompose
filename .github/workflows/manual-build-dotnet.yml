@@ -13,8 +13,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: "📁 Print workspace path"
+        run: |
+         echo "Workspace path: ${{ github.workspace }}"
+
+      - name: "🔍 List contents before checkout"
+        run: ls -la ${{ github.workspace }}
+        
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: "📂 List contents after checkout"
+        run: ls -la ${{ github.workspace }}
 
       - name: Setup .NET SDK ${{ github.event.inputs.dotnet_version }}
         uses: actions/setup-dotnet@v4
