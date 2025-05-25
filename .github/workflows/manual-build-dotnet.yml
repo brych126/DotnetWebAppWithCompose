@@ -13,6 +13,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Print docker version
+        run: docker version
+
       - name: "📁 Print workspace path"
         run: |
          echo "Workspace path: ${{ github.workspace }}"
