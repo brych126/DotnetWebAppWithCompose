@@ -1,0 +1,15 @@
+name: Test annotations
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test_annotations:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Create annotation for build error
+      run: echo "::error file=MyWebAPI/Controllers/CounterController.cs,line=27::Test error"
