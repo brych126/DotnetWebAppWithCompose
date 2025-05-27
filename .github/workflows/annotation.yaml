@@ -13,3 +13,9 @@ jobs:
 
     - name: Create annotation for build error
       run: echo "::error file=MyWebAPI/Controllers/CounterController.cs,line=27::Test error"
+
+    - name: Create annotation for build notice
+      run: echo "::notice file=MyWebAPI/Controllers/CounterController.cs,line=27,endLine=35::Test error"
+
+    - name: Create annotation for build warning
+      run: echo "::warning file=MyWebAPI/Controllers/CounterController.cs,line=27,endLine=35::Test error"
