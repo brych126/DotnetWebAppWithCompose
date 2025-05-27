@@ -1,4 +1,4 @@
-name: Test annotations
+name: Experimantal workflow
 
 on:
   workflow_dispatch:
