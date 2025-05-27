@@ -15,7 +15,28 @@ jobs:
       run: echo "::error file=MyWebAPI/Controllers/CounterController.cs,line=27::Test error"
 
     - name: Create annotation for build notice
-      run: echo "::notice file=MyWebAPI/Controllers/CounterController.cs,line=27,endLine=35::Test error"
+      run: echo "::notice file=MyWebAPI/Controllers/CounterController.cs,line=27,endLine=35::Test notice"
 
     - name: Create annotation for build warning
-      run: echo "::warning file=MyWebAPI/Controllers/CounterController.cs,line=27,endLine=35::Test error"
+      run: echo "::warning file=MyWebAPI/Controllers/CounterController.cs,line=27,endLine=35::Test warning"
+
+    - name: Group of log lines
+      run: |
+          echo "::group::My title"
+          echo "Inside group 1"
+          echo "Inside group 2"
+          echo "Inside group 3"
+          echo "::endgroup::"
+
+  generate-a-secret-output:
+    runs-on: ubuntu-latest
+    steps:
+      - id: sets-a-secret
+        name: Generate, mask, and output a secret
+        run: |
+          the_secret=$((RANDOM))
+          echo "::add-mask::$the_secret"
+          echo "secret-number=$the_secret" >> "$GITHUB_OUTPUT"
+      - name: Use that secret output (protected by a mask)
+        run: |
+          echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"
